@@ -43,7 +43,7 @@ end
 t = ARGV.shift
 p = Hash[*ARGV]
 
-require "mote"
+require "mote-angular"
 
 include Mote::Helpers
 
