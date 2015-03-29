@@ -1,12 +1,12 @@
-Mote
+Mote-Angular
 ====
 
-Minimum Operational Template.
+Minimum Operational Template for use with <a href="https://github.com/angular/angular">Angular</a>.
 
 Description
 -----------
 
-Mote is a very simple and fast template engine.
+<a href="https://github.com/soveran/mote">Mote</a> is a very simple and fast template engine.
 
 Usage
 -----
@@ -23,9 +23,9 @@ the different use cases you may face:
 
 ```
 % if user == "Bruno"
-  {{user}} rhymes with Piano
+  ~{user}~ rhymes with Piano
 % elsif user == "Brutus"
-  {{user}} rhymes with Opus
+  ~{user}~ rhymes with Opus
 % end
 ```
 
@@ -35,7 +35,8 @@ Lines that start with `%` are evaluated as Ruby code.
 
 ## Assignment
 
-Whatever it is between `{{` and `}}` gets printed in the template.
+Whatever it is between `~{` and `}~` gets printed in the template.
+Note that this is different from the standard <a href="https://github.com/soveran/mote">Mote</a> gem.
 
 ## Comments
 
@@ -52,7 +53,7 @@ As with control instructions, it happens naturally:
 
 ```
 % 3.times do |i|
-  {{i}}
+  ~{i}~
 % end
 ```
 
@@ -61,7 +62,7 @@ As with control instructions, it happens naturally:
 The values passed to the template are available as local variables:
 
 ```ruby
-example = Mote.parse("Hello {{name}}", self, [:name])
+example = Mote.parse("Hello ~{name}~", self, [:name])
 assert_equal "Hello world", example.call(name: "world")
 assert_equal "Hello Bruno", example.call(name: "Bruno")
 ```
