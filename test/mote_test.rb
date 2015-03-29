@@ -22,7 +22,7 @@ scope do
   end
 
   test "assignment" do
-    example = Mote.parse("{{ \"***\" }}")
+    example = Mote.parse("~{ \"***\" }~")
     assert_equal "***", example.call
   end
 
@@ -74,7 +74,7 @@ scope do
   end
 
   test "multiline" do
-    example = Mote.parse("The\nMan\nAnd\n{{\"The\"}}\nSea")
+    example = Mote.parse("The\nMan\nAnd\n~{\"The\"}~\nSea")
     assert_equal "The\nMan\nAnd\nThe\nSea", example[:n => 3]
   end
 
@@ -87,22 +87,22 @@ scope do
     context = Object.new
     def context.user; "Bruno"; end
 
-    example = Mote.parse("{{ context.user }}", context, [:context])
+    example = Mote.parse("~{ context.user }~", context, [:context])
     assert_equal "Bruno", example.call(context: context)
   end
 
   test "locals" do
-    example = Mote.parse("{{ user }}", TOPLEVEL_BINDING, [:user])
+    example = Mote.parse("~{ user }~", TOPLEVEL_BINDING, [:user])
     assert_equal "Bruno", example.call(user: "Bruno")
   end
 
   test "nil" do
-    example = Mote.parse("{{ user }}", TOPLEVEL_BINDING, [:user])
+    example = Mote.parse("~{ user }~", TOPLEVEL_BINDING, [:user])
     assert_equal "", example.call(user: nil)
   end
 
   test "curly bug" do
-    example = Mote.parse("{{ [1, 2, 3].map { |i| i * i }.join(',') }}")
+    example = Mote.parse("~{ [1, 2, 3].map { |i| i * i }.join(',') }~")
     assert_equal "1,4,9", example.call
   end
 
@@ -113,7 +113,7 @@ scope do
          res << "%d. %d\n" % [idx + 1, item * item]
        end
     ?>
-    {{ res }}
+    ~{ res }~
     EOT
 
     example = Mote.parse(template)
