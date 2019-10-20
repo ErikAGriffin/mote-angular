@@ -3,6 +3,7 @@ require "./lib/mote-angular"
 Gem::Specification.new do |s|
   s.name              = "mote-angular"
   s.version           = Mote::VERSION
+  s.license           = "MIT"
   s.summary           = "Minimum Operational Template for use with Angular."
   s.description       = "Mote is a very simple and fast template engine."
   s.authors           = ["Michel Martens", "Erik Griffin"]
