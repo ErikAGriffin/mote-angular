@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version           = Mote::VERSION
   s.summary           = "Minimum Operational Template for use with Angular."
   s.description       = "Mote is a very simple and fast template engine."
-  s.authors           = ["Michel Martens"]
+  s.authors           = ["Michel Martens", "Erik Griffin"]
   s.email             = ["michel@soveran.com"]
   s.homepage          = "http://github.com/ErikAGriffin/mote-angular/"
   s.files = Dir[
